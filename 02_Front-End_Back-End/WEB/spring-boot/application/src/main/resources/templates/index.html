@@ -1,0 +1,399 @@
+<html xmlns:th="https://www.thymeleaf.org">
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--위의 4개의 태그는 제일 먼저 선언되어야 합니다.  -->
+
+    <!-- Title -->
+    <title>Deep Fake Detecter - dect your video</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/popup.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+    <style>
+        #loading {
+            display: none;
+        }
+    </style> 
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+        </div>
+    </div>
+
+    <!-- ##### Header Area 시작 ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="oneMusic-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+
+                        <!-- Nav brand -->
+                        <a href="/" class="nav-brand">Deep Fake</a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                         	
+                            <!-- Login/Register & Mypage Button -->
+                            <div class="login-register-cart-button d-flex align-items-center">
+                                <!-- Login/Register -->
+                                <div th:if="${session.sessionMem}==null" class="login-register-btn mr-50">
+                                    <a href="/member/loginForm" id="loginBtn">Login</a>
+                                    <a>/</a>
+                                    <a href="/member/registerForm" id="loginBtn">Register</a>
+                                </div>
+                                <div th:if="${session.sessionMem}!=null" class="login-register-btn mr-50">
+                                    <a href="/member/logOut" id="loginBtn">LogOut</a>
+                                </div>
+
+                                <!-- Mypage Button -->
+                                <div th:if="${session.sessionMem}!=null" class="cart-btn">
+                                    <a href="/mypage">
+                                        <p><span> MY PAGE</span></p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Nav End -->
+
+                </div>
+                </nav>
+            </div>
+        </div>
+        </div>
+    </header>
+    <!-- ##### Header Area 끝 ##### -->
+
+    <!-- ##### Detect Area Start ##### -->
+    <section class="hero-area">
+        <div class="hero-slides owl-carousel">
+            <!-- Single Img Slide -->
+            <div class="single-hero-slide d-flex align-items-center justify-content-center">
+                <!-- Slide Img -->
+                <div class="slide-img bg-img" style="background-image: url(/img/bg-img/trump.png);"></div>
+                <!-- Slide Content -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="hero-slides-content text-center">
+                                <h6 data-animation="fadeInUp" data-delay="100ms">Using Latest Model</h6>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Dectect Your Video <span>Dectect Your Video</span></h2>
+                                <a data-animation="fadeInUp" data-delay="500ms" href="#layer2"
+                                class="btn btn-example oneMusic-btn mt-50">Go Detect <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Single Img Slide -->
+            <div class="single-hero-slide d-flex align-items-center justify-content-center">
+                <!-- Slide Img -->
+                <div class="slide-img bg-img" style="background-image: url(/img/bg-img/make.jpg);"></div>
+                <!-- Slide Content -->
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="hero-slides-content text-center">
+                                <h6 data-animation="fadeInUp" data-delay="100ms">Using Latest Model</h6>
+                                <h2 data-animation="fadeInUp" data-delay="300ms">Dectect Your Video <span>Dectect Your Video</span></h2>
+                                <a data-animation="fadeInUp" data-delay="500ms" href="#layer2"
+                                class="btn btn-example oneMusic-btn mt-50">Go Detect <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Detect Area 끝 ##### -->
+
+    <!-- ##### content Area 시작 ##### -->
+    <section class="latest-albums-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading style-2">
+                        <p>See what we make</p>
+                        <h2>DeepFake Detection Guide</h2>
+
+                        <p>악의적인 목적으로 제작되어 배포되는 딥 페이크 영상이 
+                            
+                            심각한 초상권 침해와 인권 침해를 불러일으키고 있다. 
+                            
+                            육안으로는 구분할 수 없을 정도로 정교하게 만들어진 
+                            
+                            딥 페이크 영상을 판별하는 시스템을 만들어 범죄 피해를 
+                            
+                            줄이고자 한다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### content Area 끝 ##### -->
+
+    <!-- ##### Madeby Area 시작 ##### -->
+    <section class="latest-albums-area section-padding-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading style-2">
+                        <p>See who we are</p>
+                        <h2>DeepFake Detection Made By</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-9">
+                    <div class="ablums-text text-center mb-70">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <div class="albums-slideshow owl-carousel">
+                        <!-- Single Area -->
+                        <div class="single-album">
+                            <img src="/img/bg-img/찬호.jpg" alt="">
+                            <div class="album-info">
+                                <a href="contact.html">
+                                    <h5>멀캠 딥러닝 이찬호</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Single Area -->
+                        <div class="single-album">
+                            <img src="/img/bg-img/지민.jpg" alt="">
+                            <div class="album-info">
+                                <a href="contact.html">
+                                    <h5>멀캠 딥러닝 황지민</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Single Area -->
+                        <div class="single-album">
+                            <img src="/img/bg-img/소현.jpg" alt="">
+                            <div class="album-info">
+                                <a href="contact.html">
+                                    <h5>멀캠 딥러닝 정소현</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Single Area -->
+                        <div class="single-album">
+                            <img src="/img/bg-img/정철.jpg" alt="">
+                            <div class="album-info">
+                                <a href="contact.html">
+                                    <h5>멀캠 딥러닝 이정철</h5>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- Single Area -->
+                        <div class="single-album">
+                            <img src="/img/bg-img/용주.jpg" alt="">
+                            <div class="album-info">
+                                <a href="contact.html">
+                                    <h5>멀캠 딥러닝 정용주</h5>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### content Area 끝 ##### -->
+
+    <!-- upload Area -->
+    <div class="dim-layer">
+        <div class="dimBg"></div>
+        <div id="layer2" class="pop-layer" style="border-radius: 15px;">
+            <div class="pop-container">
+                <div class="pop-conts">
+                    <p class="ctxt mb20" style="font: weight 500; color:black; font-size: 20px;">
+                        동영상 업로드<br>
+                    </p>
+                    <a href="#" class="btn-layerClose">Close</a>
+                        <article>
+                            파일을 업로드 하여 예측합니다
+                        </article>
+                        <i id="loading" class="fa fa-spinner fa-spin" style="font-size:24px"></i>
+                        <label class="file">
+                            <span>Drop a file or click to select one</span>
+                            <input class="fileinput" type="file" accept="video/*">
+                        </label>
+                    <div style="position: absolute; left: 0; right: 0; margin: auto; bottom: 5vh;">
+                        <!-- 로그인 여부에 따라 다름 -->
+                        <div th:if="${session.sessionMem}==null">
+                            <button onclick="myFunction(3)">only 3 frame predict</button>
+                            <br>
+                            <span><a href="/member/loginForm">Sign in</a> to deep predict</span>
+                        </div>
+                        <div th:if="${session.sessionMem}!=null">
+                            <button onclick="myFunction(3)">only 3 predict</button>
+                            <button onclick="myFunction(0)">deep predict</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+
+    <!-- ##### Footer Area 시작 ##### -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row d-flex flex-wrap align-items-center">
+                <div class="col-12 col-md-6">
+                    <p class="copywrite-text"><a href="#">
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved <i
+                            class="fa fa-heart-o" aria-hidden="true"></i> by Chimac
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area 끝 ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="/js/active.js"></script>
+
+    
+    <script>
+        // 버튼 누르면 팝업창 띄워짐
+        $('.btn-example').click(function () {
+            var $href = $(this).attr('href');
+            layer_popup($href);
+        });
+        // 팝업창 띄우는 함수
+        function layer_popup(el) {
+
+            var $el = $(el);        //레이어의 id를 $el 변수에 저장
+            var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+
+            isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+
+            $el.find('a.btn-layerClose').click(function () {
+                isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); // 닫기 버튼을 클릭하면 레이어가 닫힌다.
+                return false;
+            });
+
+            $('.layer .dimBg').click(function () {
+                $('.dim-layer').fadeOut();
+                return false;
+            });
+
+        }
+    </script>
+
+    <script>
+        // 파일 선택시 창 내용 변화
+        document.querySelector('input[type=file]').addEventListener('change',function(){
+
+            console.log(this.files);
+            var f = this.files;
+            var el = $(this).parent();
+
+            el.children('span').html(f[0].name + '<br>' +
+                '<span class="sml">' +
+                'type: ' + f[0].type + ', ' +
+                Math.round(f[0].size / 1024) + ' KB</span>');
+        });
+
+        // predict 버튼 누르면 실행
+        function myFunction(getframe) {
+
+            document.querySelector('#loading').style.display = 'block';
+
+            var formData = new FormData();
+            var fileField = document.querySelector('input[type=file]');
+            
+            // 로그인한 계정의 정보 가져오기
+            fetch('getididx', {
+                method: 'GET'
+            })
+            .then(response => response.text())
+            .then(text => upload_predict(text, getframe))
+
+            // 업로드
+            function upload_predict(text, getframe) {
+
+                console.log(text)
+                formData.append('file', fileField.files[0]);
+                formData.append('ididx', text);
+                formData.append('getframe', getframe);
+                document.querySelector('article').innerHTML = '업로드 & 분석';
+                
+                
+                // 예측
+                fetch('predict', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    
+                    if(response.ok) {
+                        return response.json()
+                    }
+                    else {
+                        document.querySelector('article').innerHTML = '분석실패';
+                        document.querySelector('#loading').style.display = 'none';
+                        throw new Error('predict error');
+                    }
+                })
+                .then(json => done(json))
+            }
+
+            // 결과 페이지로 이동
+            function done(json){
+                console.log(fileField.filename);
+                window.location.replace('result?results='+json["acc"] + '&filename='+json["filename"] 
+                + '&frames='+json["num_frames"]+'&count='+json["count"]+'&fake_num='+json['fake_num']);
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- 위의 4개의 태그는 제일 먼저 선언되어야 합니다. -->
+
+        <!-- Title -->
+        <title>Deep Fake Detecter - dect your video</title>
+
+        <!-- Favicon -->
+        <link rel="icon" href="/img/core-img/favicon.ico">
+
+        <!-- Stylesheet -->
+        <link rel="stylesheet" href="/style.css">
+
+        <style>
+        .pop-layer .pop-container {
+            /* padding: 20px 25px; */
+        }
+        .pop-container{
+            bottom: 0;
+            position: absolute;
+            margin: auto;
+            left: 0;
+            right: 0;
+            text-align: center;
+        }
+        
+        .pop-conts {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+        }
+
+        .pop-layer p.ctxt {
+            color: #666;
+            line-height: 25px;
+        }
+
+        .pop-layer .btn-r {
+            width: 100%;
+            margin: 10px 0 20px;
+            padding-top: 10px;
+            border-top: 1px solid #DDD;
+            text-align: right;
+        }
+
+        .pop-layer {
+            max-width: 80vw;
+            max-height: 80vh;
+            position: absolute;
+            display: inline-block;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+        }
+
+        .dim-layer {
+            display: none;
+            position: fixed;
+            _position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 100;
+        }
+
+        .dim-layer .dimBg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            opacity: .5;
+            filter: alpha(opacity=50);
+        }
+
+        .dim-layer .pop-layer {
+            display: block;
+        }
+        video {
+            margin: auto;
+            border-radius: 15px;
+            left: 0;
+            right: 0;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            max-width: 100%;
+            max-height: 100%;
+            min-height: 50%;
+            min-width: 50%;
+        }
+        </style>
+    </head>
+
+    <body>
+        <!-- Preloader -->
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="lds-ellipsis">
+            </div>
+        </div>
+
+        <!-- ##### Header Area 시작 ##### -->
+        <header class="header-area">
+            <!-- Navbar Area -->
+            <div class="oneMusic-main-menu">
+                <div class="classy-nav-container breakpoint-off">
+                    <div class="container">
+                        <!-- Menu -->
+                        <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+
+                            <!-- Nav brand -->
+                            <a href="/" class="nav-brand">Deep Fake</a>
+
+                            <!-- Navbar Toggler -->
+                            <div class="classy-navbar-toggler">
+                                <span class="navbarToggler"></span>
+                            </div>
+
+                            <!-- Menu -->
+                            <div class="classy-menu">
+
+                                <!-- Close Button -->
+                                <div class="classycloseIcon">
+                                    <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                                </div>
+                                <div th:if="${sessionMem}!=null" class="login-register-btn mr-50">
+                                    <a href="/member/logOut" id="loginBtn">LogOut</a>
+                                </div>
+
+                                <!-- Cart Button -->
+                                <div th:if="${sessionMem}!=null" class="cart-btn">
+                                    <a href="/member/myPage">
+                                        <p><span> MY PAGE</span></p>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- Nav End -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- ##### Header Area 끝 ##### -->
+    
+        <!-- ##### Mypage Top Area Start ##### -->
+        <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/img/bg-img/trump.png);">
+            <div class="bradcumbContent">
+                <p>See what’s new</p>
+                <h2>My Videos</h2>
+            </div>
+        </section>
+        <!-- ##### Mypage Top Area End ##### -->
+
+        <!-- ##### Mypage Catagory Area 시작 ##### -->
+        <section class="album-catagory section-padding-100-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="browse-by-catagories catagory-menu d-flex flex-wrap align-items-center mb-70">
+                            <a href="#" data-filter="*">Browse All</a>
+                            <a href="#" data-filter=".a" class="active">A</a>
+                            <a href="#" data-filter=".b">B</a>
+                            <a href="#" data-filter=".c">C</a>
+                            <a href="#" data-filter=".d">D</a>
+                            <a href="#" data-filter=".e">E</a>
+                            <a href="#" data-filter=".f">F</a>
+                            <a href="#" data-filter=".g">G</a>
+                            <a href="#" data-filter=".h">H</a>
+                            <a href="#" data-filter=".i">I</a>
+                            <a href="#" data-filter=".j">J</a>
+                            <a href="#" data-filter=".k">K</a>
+                            <a href="#" data-filter=".l">L</a>
+                            <a href="#" data-filter=".m">M</a>
+                            <a href="#" data-filter=".n">N</a>
+                            <a href="#" data-filter=".o">O</a>
+                            <a href="#" data-filter=".p">P</a>
+                            <a href="#" data-filter=".q">Q</a>
+                            <a href="#" data-filter=".r">R</a>
+                            <a href="#" data-filter=".s">S</a>
+                            <a href="#" data-filter=".t">T</a>
+                            <a href="#" data-filter=".u">U</a>
+                            <a href="#" data-filter=".v">V</a>
+                            <a href="#" data-filter=".w">W</a>
+                            <a href="#" data-filter=".x">X</a>
+                            <a href="#" data-filter=".y">Y</a>
+                            <a href="#" data-filter=".z">Z</a>
+                            <a href="#" data-filter=".number">0-9</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="album-list" class="row oneMusic-albums">
+                </div>
+                
+            </div>
+        </section>
+        <!-- ##### Mypage Catagory Area 끝 ##### -->
+
+    <!-- video Area Start-->
+    <div class="dim-layer">
+        <div class="dimBg"></div>
+        <div id="layer2" class="pop-layer" style="border-radius: 15px;">
+            <video poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" 
+            playsinline autoplay muted loop>
+            </video>
+
+            <div class="pop-container" style="bottom: 0;">
+                <!-- <div class="pop-conts"> -->
+                    <a href="#" class="btn-layerDelete" style="background-color: #000; color: #fff;">Delete</a>
+                    <span>             </span>
+                    <a href="#" class="btn-layerClose" style="background-color: #fff; color: #000;">Close</a>
+                <!-- </div> -->
+            </div>
+        </div>
+    </div>
+    <!-- video Area End-->
+   
+        <!-- ##### Footer Area 시작 ##### -->
+        <footer class="footer-area">
+            <div class="container">
+                <div class="row d-flex flex-wrap align-items-center">
+                    <div class="col-12 col-md-6">
+                        <a href="#"><img src="/img/core-img/logo.png" alt=""></a>
+                        <p class="copywrite-text"><a href="#">
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Chimac</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script th:inline="javascript">
+            // window.onload = 
+            makeAlbum();
+
+            function makeAlbum() {
+                let lst = [[${iss}]];
+                let filename = [[${fs}]];
+                let accs = [[${accs}]];
+                let deletes = [[${deletes}]];
+
+                for (i in lst){
+                    let al = document.querySelector("#album-list");
+                    let div1 = document.createElement('div');
+                    div1.className = "col-12 col-sm-4 col-md-3 col-lg-2 single-album-item";
+                    let div2 = document.createElement('div');
+                    div2.className = "single-album"
+                    let img = document.createElement('img');
+                    img.src = lst[i] + '.jpg';
+                    let div3 = document.createElement('div');
+                    
+                    let a;
+                    if (deletes[i]==0) {
+                        a = document.createElement('a'); 
+                        a.href = "#layer2";
+                        a.className = "btn-example";
+                    }
+                    else {a = document.createElement('span');}
+
+                    let h5 = document.createElement('h5');
+                    let p = document.createElement('p');
+                    div1.classList.add(filename[i][0].toLowerCase());
+                    p.innerHTML = accs[i];
+
+                    let fn;
+                    if (filename[i].length> 10)
+                    {
+                        fn = filename[i].substring(0,9) + '...'
+                    }
+                    else {fn = filename[i]}
+                    h5.innerHTML = fn;
+
+                    a.appendChild(h5);
+                    div3.appendChild(a);
+                    div3.appendChild(p);
+                    div2.appendChild(img);
+                    div2.appendChild(div3);
+                    div1.appendChild(div2);
+                    al.appendChild(div1);
+                }
+            }
+
+        </script>
+        <!-- jQuery-2.2.4 js -->
+        <script src="/js/jquery/jquery-2.2.4.min.js"></script>
+        <script>
+            // item 제목을 클릭하면 영상을 볼수있게 보여줌
+            $('.btn-example').click(function () {
+                var th = $(this)
+                var iditem = $(this).parent().prev().attr('src').split('.')[0]
+                var $href = $(this).attr('href');
+                fetch('viewvid?filename='+ iditem, {method: 'GET'}).then(response => layer_popup($href, iditem, th))
+            });
+
+            // layer열리면 영상 셋팅
+            function layer_popup(el, filename, th) {
+                let source = document.createElement( 'source' );
+                source.src = filename + ".webm";
+                source.type = "video/webm";
+                let video = document.querySelector("video")
+                video.appendChild(source);
+
+                video.load()
+                video.play();
+
+                var $el = $(el);        //레이어의 id를 $el 변수에 저장
+                var isDim = $el.prev().hasClass('dimBg');   //dimmed 레이어를 감지하기 위한 boolean 변수
+                isDim ? $('.dim-layer').fadeIn() : $el.fadeIn();
+    
+
+                // delete 버튼을 클릭하면 aws에서 object를 삭제하고 레이어가 닫힌다.
+                $el.find('a.btn-layerDelete').click(function () {
+                    video.pause();
+                    isDim ? $('.dim-layer').fadeOut() : $el.fadeOut();
+                    $('source').remove();
+                    fetch('del?filename='+filename,{method: 'GET'}).then(response => response);
+                    th.removeattr('href');
+                    th.removeClass('btn-example');
+                    return false;
+                });
+                
+                // close 버튼을 클릭하면 레이어가 닫힌다.
+                $el.find('a.btn-layerClose').click(function () {
+                    video.pause();
+                    isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); 
+                    $('source').remove();
+                    return false;
+                });
+    
+                // !동작안함
+                $('.dimBg').click(function () {
+                    video.pause();
+                    isDim ? $('.dim-layer').fadeOut() : $el.fadeOut(); 
+                    $('source').remove();
+                    return false;
+                });
+    
+            }
+        </script>
+
+        <!-- ##### All Javascript Script ##### -->
+        <!-- Popper js -->
+        <script src="/js/bootstrap/popper.min.js"></script>
+        <!-- Bootstrap js -->
+        <script src="/js/bootstrap/bootstrap.min.js"></script>
+        <!-- All Plugins js -->
+        <script src="/js/plugins/plugins.js"></script>
+        <!-- Active js -->
+        <script src="/js/active.js"></script>
+
+    </body>
+
+</html>

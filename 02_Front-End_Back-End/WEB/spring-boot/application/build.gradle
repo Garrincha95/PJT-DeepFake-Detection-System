@@ -1,0 +1,52 @@
+plugins {
+	id 'org.springframework.boot' version '2.2.6.RELEASE'
+	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
+	id 'java'
+}
+
+group = 'com.gmimg.multicampus'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '13'
+
+configurations {
+	developmentOnly
+	runtimeClasspath {
+		extendsFrom developmentOnly
+	}
+
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	//스프링 시큐리티
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+	//mybatis 추가
+	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.0'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'mysql:mysql-connector-java'
+	
+	implementation 'com.amazonaws:aws-java-sdk-s3:1.11.238'
+	compileOnly 'org.projectlombok:lombok'
+	
+	compile group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
+	compile group: 'org.imgscalr', name: 'imgscalr-lib', version: '4.2'
+	compile group: 'org.webjars', name: 'jquery', version: '3.4.1'
+	compile group: 'org.webjars', name: 'bootstrap', version: '4.4.1'
+	compile group: 'net.coobird', name: 'thumbnailator', version: '0.4.11'
+	
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+	annotationProcessor 'org.projectlombok:lombok'
+	
+}

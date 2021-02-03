@@ -1,0 +1,27 @@
+version: '3'
+services:
+  spring:
+    container_name: spring
+    build: ./spring-boot
+    image: "spring:test"
+    ports:
+      - 8080:8080
+    networks:
+    - backend
+    volumes: 
+      - ./static:/static
+
+  nginx:
+    container_name: nginx
+    build: ./nginx
+    image: "nginx:test"
+    ports:
+      - "80:80"
+    networks:
+      - backend
+    volumes: 
+      - ./static:/static
+
+networks:
+  backend:
+    driver: bridge

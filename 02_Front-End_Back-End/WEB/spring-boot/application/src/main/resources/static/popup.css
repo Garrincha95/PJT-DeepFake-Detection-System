@@ -1,0 +1,170 @@
+.pop-layer .pop-container {
+    padding: 20px 25px;
+}
+
+.pop-conts {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.pop-layer p.ctxt {
+    color: #666;
+    line-height: 25px;
+}
+
+.pop-layer .btn-r {
+    width: 100%;
+    margin: 10px 0 20px;
+    padding-top: 10px;
+    border-top: 1px solid #DDD;
+    text-align: right;
+}
+
+.pop-layer {
+    
+    display: none;
+    position: absolute;
+    position:absolute; 
+    top:0; 
+    bottom:0; 
+    left: 0;
+    right: 0; 
+    width: 60%;
+    height: 60%;
+    min-width: 300px;
+    margin: auto;
+    /* top: 50%;
+    left: 50%;
+    width: 410px;
+    height: auto; */
+    background-color: #fff;
+    border: 1px solid black;
+    z-index: 10;
+}
+
+.dim-layer {
+    display: none;
+    position: fixed;
+    _position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.dim-layer .dimBg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+}
+
+.dim-layer .pop-layer {
+    display: block;
+}
+
+a.btn-layerClose {
+    display: inline-block;
+    height: 25px;
+    padding: 0 14px 0;
+    border: 1px solid #304a8a;
+    background-color: #3f5a9d;
+    font-size: 13px;
+    color: #fff;
+    line-height: 25px;
+    position: absolute;
+
+    bottom: 20px;
+    right: 20px;
+}
+
+a.btn-layerClose:hover {
+    border: 1px solid #091940;
+    background-color: #1f326a;
+    color: #fff;
+
+}
+
+form {
+    width: 91%;
+    height: auto;
+   
+}
+
+input[type=text] {
+    background-color: transparent;
+    width: 100%;
+    font-size: 80%;
+    text-align: center;
+    /*text-transform: uppercase;*/
+
+    padding: 1rem 2rem;
+    border: 0;
+}
+
+label.file {
+    position: relative;
+    display: block;
+    /* width: 100%; */
+    height: 35%;
+    font-size: 80%;
+    text-align: center;
+    text-transform: uppercase;
+    border: 2px dashed #ccc;
+    margin: 5vh 0;
+    padding: 5vh;
+}
+
+label.file:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+label.file:active,
+label.file.focus {
+    border-color: #09f;
+}
+
+input[type=file] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    outline: 0;
+    border: 1px solid red;
+}
+
+button {
+    color: #eee;
+    background-color: #666;
+    padding: 2vh 5vw;
+    border: 0;
+    outline: none;
+}
+
+button:hover,
+button:focus {
+    background-color: #333;
+}
+
+button:active {
+    color: #fff;
+    background-color: #000;
+}
+
+.sml {
+    display: inline-block;
+    color: #eee;
+    background-color: rgba(0, 200, 0, 0.67);
+    border-radius: 1rem;
+    font-size: smaller;
+    margin: 1rem 0 0 0;
+    padding: 0.67rem 1rem;
+}

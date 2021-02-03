@@ -1,0 +1,16 @@
+version: '3'
+services:
+  flask:
+    container_name: flask
+    build: ./flask
+    image: "flask:test"
+    ports:
+      - "5000:5000"
+    networks:
+    - backend
+    volumes: 
+      - ./static:/static
+
+networks:
+  backend:
+    driver: bridge

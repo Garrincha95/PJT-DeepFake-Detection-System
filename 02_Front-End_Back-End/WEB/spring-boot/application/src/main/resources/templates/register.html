@@ -1,0 +1,295 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!--위의 4개의 태그는 제일 먼저 선언되어야 합니다. -->
+
+    <!-- Title -->
+    <title>Deep Fake Detecter - dect your video</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="/img/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    <script src="/webjars/jquery/3.4.1/jquery.js"></script>
+    <script type="text/javascript" th:inline="javascript">
+		$(document).ready(function(){
+
+			// 취소
+			$(".cencle").on("click", function(){
+				location.href = "/";
+			})
+			
+			$("#submit").on("click", function(){
+				var emailVal = $("#memId").val();
+				var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+				var pwd1 = $("#memPw0").val();
+            	var pwd2 = $("#memPw").val();
+            	
+            	//id 입력확인 js
+				if($("#memId").val()==""){
+					alert("아이디를 입력해주세요.");
+					$("#memId").focus();
+					return false;
+				}
+				//비밀번호 입력확인 js
+				if($("#memPw").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#memPw").focus();
+					return false;
+				}
+				//비밀번호 숫자확인 js
+				if(pwd1.length < 8 || pwd1.length>15){
+					alert("비밀번호는 8~15 자로 가능합니다.");
+					$("#memPw").focus();
+					return false;
+				}
+				//이메일 양식확인 js
+				if (emailVal.match(regExp) != null) {
+					var idChkVal = $("#idChk").val();
+				} else {
+					alert('이메일 형식을 확인해주세요');
+					$("input[name=memId]").focus();
+					return false;
+				}
+				//중복확인 체크
+				if(idChkVal == "N"){
+					alert("중복확인 버튼을 눌러주세요.");
+					$("input[name=memId]").focus();
+					return false;
+					
+				}
+				if (pwd1 == pwd2) {
+					alert("회원가입 성공")
+					$("#regForm").submit();
+						
+				} else {
+					alert("비밀번호 다름");
+						$("input[name=memPw]").focus();	
+// 						$("input[name=memPw]") = null;
+// 						document.getElementById("#memPw").value = null;
+					return false;
+				}
+			});
+		})
+		//이메일 중복확인 Ajax 쿼리
+		function fn_idChk(){
+			$.ajax({
+				url : "/idChk",
+				type : "post",
+				dataType : "json",
+				data : {"memId" : $("#memId").val()},
+				success : function(data){
+					var emailVal = $("#memId").val();
+					var regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+					//중복확인 + 이메일확인 시작
+					if(data == 1){
+						if (emailVal.match(regExp) != null) {
+							console.log("이메일 양식 확인 ok ", emailVal.match(regExp));
+							var idChkVal = $("#idChk").val();
+							
+						} else {
+							alert('이메일 형식을 확인해주세요');
+							console.log("이메일 양식 확인 x", emailVal.match(regExp));
+							$("input[name=memId]").focus();
+							return false;
+						}
+						$("#idChk").attr("value", "N");
+						alert("중복된 아이디입니다.");
+						$("input[name=memId]").focus();
+					}else if(data == 0){
+						if (emailVal.match(regExp) != null) {
+							console.log("이메일 양식 확인 ok ", emailVal.match(regExp));
+							var idChkVal = $("#idChk").val();
+							
+						} else {
+							alert('이메일 형식을 확인해주세요');
+							console.log("이메일 양식 확인 x", emailVal.match(regExp));
+							$("input[name=memId]").focus();
+							return false;
+						}
+						$("#idChk").attr("value", "Y");
+						alert("사용가능한 아이디입니다.");
+						$("input[name=memPw0]").focus();
+					}
+					//중복확인 + 이메일확인 끝
+				}
+			})
+		}
+	</script>
+
+</head>
+
+<body>
+    <!-- Preloader -->
+    <div class="preloader d-flex align-items-center justify-content-center">
+        <div class="lds-ellipsis">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+ <!-- ##### Header Area 시작 ##### -->
+    <header class="header-area">
+        <!-- Navbar Area -->
+        <div class="oneMusic-main-menu">
+            <div class="classy-nav-container breakpoint-off">
+                <div class="container">
+                    <!-- Menu -->
+                    <nav class="classy-navbar justify-content-between" id="oneMusicNav">
+
+                        <!-- Nav brand -->
+                        <a href="/" class="nav-brand">Deep Fake</a>
+
+                        <!-- Navbar Toggler -->
+                        <div class="classy-navbar-toggler">
+                            <span class="navbarToggler"><span></span><span></span><span></span></span>
+                        </div>
+
+                        <!-- Menu -->
+                        <div class="classy-menu">
+
+                            <!-- Close Button -->
+                            <div class="classycloseIcon">
+                                <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                            </div>
+
+                            <!-- Nav Start -->
+                         
+                            <!-- Login/Register & Cart Button -->
+                            <div class="login-register-cart-button d-flex align-items-center">
+                                <!-- Login/Register -->
+                                <div th:if="${sessionMem}==null" class="login-register-btn mr-50">
+                                    <a href="/member/loginForm" id="loginBtn">Login</a>
+                                    <a>/</a>
+                                    <a href="/member/registerForm" id="loginBtn">Register</a>
+                                </div>
+
+                                <!-- Cart Button -->
+                                <div th:if="${sessionMem}!=null" class="cart-btn">
+                                    <a href="/member/myPage">
+                                        <p><span> MY PAGE</span></p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Nav End -->
+
+                </div>
+                </nav>
+            </div>
+        </div>
+        </div>
+    </header>
+    <!-- ##### Header Area 끝 ##### -->
+
+    <!-- ##### Register Top Area 시작 ##### -->
+    <section class="breadcumb-area bg-img bg-overlay" style="background-image: url(/img/bg-img/trump.png);">
+        <div class="bradcumbContent">
+            <p>See what’s new</p>
+            <h2>Register</h2>
+        </div>
+    </section>
+    <!-- ##### Register Top Area 끝 ##### -->
+
+    <!-- ##### Register Area 시작 ##### -->
+    <section class="login-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8">
+                    <div class="login-content">
+                        <h3>Welcome New!</h3>
+                        <!-- Register Form -->
+                        
+                        <div class="register-form">
+                            <form action="/register" method="post" id="regForm" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="memId">Email address</label>
+                                    <input type="email" name="memId" class="form-control" id="memId" aria-describedby="emailHelp" placeholder="Enter E-mail">
+                                    <small id="emailHelp" class="form-text text-muted"><i class="fa fa-lock mr-2"></i>We'll never share your email with anyone else.</small>
+                                    <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regMemPw0">Password</label>
+                                    <div class="content_content">
+                                    	<input type="password" name="memPw0" class="form-control" id="memPw0" placeholder="Password">
+                                    	<span>8~15자리의 영문, 숫자, 특수문자의 입력이 가능합니다.</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="regMemPw">Password Confirm</label>
+                                    <div>
+                                    	<input type="password" name="memPw" class="form-control" id="memPw" placeholder="Pleae Password one more">
+                                		<span id="alert-success" style="display: none;">비밀번호가 일치합니다.</span>
+                                        <span id="alert-danger" style="display: none; color: #d92742; font-weight: bold; ">비밀번호가 일치하지않습니다.</span>
+                                	</div>
+                                </div>
+                                	<button type="submit" id="submit" class="btn oneMusic-btn mt-30">Register</button>
+                            </form>
+            					
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- ##### Register Area 끝 ##### -->
+
+    <!-- ##### Footer Area 시작 ##### -->
+    <footer class="footer-area">
+        <div class="container">
+            <div class="row d-flex flex-wrap align-items-center">
+                <div class="col-12 col-md-6">
+                    <a href="#"><img src="/img/core-img/logo.png" alt=""></a>
+                    <p class="copywrite-text"><a href="#top">
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved <i
+                                class="fa fa-heart-o" aria-hidden="true"></i> by Chimac
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <!-- ##### Footer Area 끝 ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+	<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="/js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="/js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="/js/active.js"></script>
+    
+    <script>
+    //비밀번호 일치여부 js
+        $('.form-control').focusout(function () {
+            var pwd1 = $("#memPw0").val();
+            var pwd2 = $("#memPw").val();
+
+            if (pwd1 != '' && pwd2 == '') {
+                null;
+            } else if (pwd1 != "" || pwd2 != "") {
+                if (pwd1 == pwd2) {
+                    $("#alert-success").css('display', 'inline-block');
+                    $("#alert-danger").css('display', 'none');
+                } else {
+                    $("#alert-success").css('display', 'none');
+                    $("#alert-danger").css('display', 'inline-block');
+                }
+            }
+        });
+    </script>    
+</body>
+
+</html>

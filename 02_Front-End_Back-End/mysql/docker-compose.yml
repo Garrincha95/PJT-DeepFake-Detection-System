@@ -1,0 +1,16 @@
+version: '3'
+services:
+  mysql:
+    container_name: mysql
+    build: ./mysql
+    image: "mysql:test"
+    ports:
+      - "3306:3306"
+    volumes: 
+      - ./static/mysql:/var/lib/mysql
+    # networks: 
+    #   - backend
+
+# networks:
+#   backend:
+#     driver: bridge
