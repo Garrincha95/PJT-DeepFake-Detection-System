@@ -10,9 +10,9 @@
 
 DeepFake Detection System (DFDS)는 사이트에 DeepFake로 의심 되는 영상을 업로드 하면, 해당 영상이DeepFake 영상의 진위여부를 판별하며 판별 확률까지 제공하는 기능을 수행하도록 개발하였다.
 
-Front-End & Back-End : https://github.com/Garrincha95/PJT-DeepFake-Detection-System/tree/master/02_Front-End_Back-End
+Front-End & Back-End Read Me : https://github.com/Garrincha95/PJT-DeepFake-Detection-System/tree/master/02_Front-End_Back-End
 
-DL : https://github.com/Garrincha95/PJT-DeepFake-Detection-System/tree/master/01_DL
+DL Read Me : https://github.com/Garrincha95/PJT-DeepFake-Detection-System/tree/master/01_DL
 
 #### 
 
